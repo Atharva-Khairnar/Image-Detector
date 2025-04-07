@@ -9,5 +9,5 @@ streamlit>=1.22.0
 efficientnet-pytorch>=0.7.1
 streamlit
 flask
-opencv-python-headless
 ultralytics
+opencv-python-headless==4.8.0.76
