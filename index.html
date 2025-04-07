@@ -2,42 +2,139 @@
 <html>
 <head>
     <title>Smart Object Detector</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .container {
+            background: rgba(255, 255, 255, 0.95);
+            max-width: 1000px;
+            width: 90%;
+            margin: 20px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #2d3748;
+            font-size: 2.5em;
+            margin-bottom: 10px;
             text-align: center;
         }
-        .instructions {
-            margin: 20px 0;
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
         }
-        .github-link {
-            margin-top: 30px;
+        .feature {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 12px;
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .feature h3 {
+            color: #4a5568;
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        .feature p {
+            color: #718096;
             font-size: 0.9em;
-            color: #666;
+            margin: 0;
+        }
+        .upload-form {
+            background: #f7fafc;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+            border: 2px dashed #667eea;
+        }
+        .file-label {
+            background: #667eea;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        .file-label:hover {
+            background: #5a67d8;
+            transform: translateY(-1px);
+        }
+        .submit-btn {
+            background: #48bb78;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+        .submit-btn:hover {
+            background: #38a169;
+            transform: translateY(-1px);
+        }
+        #filename-display {
+            color: #4a5568;
+            margin: 10px 0;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Smart Object Detector</h1>
-        <div class="instructions">
-            <p>To use this object detection app:</p>
-            <ol>
-                <li>Clone the repository</li>
-                <li>Install the requirements</li>
-                <li>Run the application locally</li>
-            </ol>
+        <h1>🔍 Smart Object Detector</h1>
+        <div class="features">
+            <div class="feature">
+                <h3><i class="fas fa-bullseye"></i> High Accuracy</h3>
+                <p>Powered by YOLOv8 AI model</p>
+            </div>
+            <div class="feature">
+                <h3><i class="fas fa-rocket"></i> Fast Detection</h3>
+                <p>Results in milliseconds</p>
+            </div>
+            <div class="feature">
+                <h3><i class="fas fa-cube"></i> 80+ Objects</h3>
+                <p>Detects various objects</p>
+            </div>
         </div>
-        <div class="github-link">
-            <p>Find the source code on GitHub:</p>
-            <a href="[https://github.com/yourusername/smart-object-detector">View](https://github.com/yourusername/smart-object-detector">View) on GitHub</a>
+        <div class="upload-form">
+            <form action="/" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept="image/*" id="file-input" onchange="updateFilename()">
+                <label for="file-input" class="file-label">Choose Image</label>
+                <div id="filename-display">No file chosen</div>
+                <input type="submit" value="Detect Objects" class="submit-btn">
+            </form>
         </div>
+        <script>
+        function updateFilename() {
+            const input = document.getElementById('file-input');
+            const display = document.getElementById('filename-display');
+            if (input.files.length > 0) {
+                display.textContent = 'Selected: ' + input.files[0].name;
+            } else {
+                display.textContent = 'No file chosen';
+            }
+        }
+        </script>
     </div>
 </body>
 </html>
