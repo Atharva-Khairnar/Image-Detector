@@ -3,7 +3,7 @@ from PIL import Image
 import io
 import torch
 import numpy as np
-import cv2
+opencv-python-headless==4.8.0.76
 import base64
 from ultralytics import YOLO
 
